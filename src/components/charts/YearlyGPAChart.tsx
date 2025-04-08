@@ -19,7 +19,7 @@ const YearlyGPAChart = ({ data, maxScale }: YearlyGPAProps) => {
           <RechartsBarChart
             data={data}
             layout="vertical"
-            margin={{ top: 20, right: 30, bottom: 20, left: 100 }}
+            margin={{ top: 20, right: 50, bottom: 20, left: 120 }}
           >
             <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
             <XAxis 
@@ -30,7 +30,7 @@ const YearlyGPAChart = ({ data, maxScale }: YearlyGPAProps) => {
             <YAxis 
               type="category" 
               dataKey="name" 
-              width={100}
+              width={120}
               tick={{ fontSize: 12 }}
             />
             <Bar 
@@ -54,4 +54,3 @@ const YearlyGPAChart = ({ data, maxScale }: YearlyGPAProps) => {
 };
 
 export default YearlyGPAChart;
-
