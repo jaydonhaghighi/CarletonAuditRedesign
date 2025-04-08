@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { ChevronRight, ChevronDown, Check, AlertCircle, Clock } from 'lucide-react';
@@ -62,7 +61,7 @@ const RequirementGroup = ({ title, subtitle, progress, percentage, courses }: Re
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="card-container">
+    <div className="bg-gray-50 rounded-lg p-4 mb-4 shadow-sm">
       <div 
         className="flex justify-between items-center cursor-pointer"
         onClick={() => setIsExpanded(!isExpanded)}
@@ -71,6 +70,10 @@ const RequirementGroup = ({ title, subtitle, progress, percentage, courses }: Re
           <div className="flex items-center">
             {percentage === 100 ? (
               <Check className="h-5 w-5 text-green-600 mr-2" />
+            ) : title === 'Engineering Electives' ? (
+              <div className="h-5 w-5 flex items-center justify-center mr-2">
+                <div className="h-3 w-3 rounded-full bg-red-400"></div>
+              </div>
             ) : (
               <div className="h-5 w-5 flex items-center justify-center mr-2">
                 <div className="h-3 w-3 rounded-full bg-blue-400"></div>
@@ -112,7 +115,7 @@ interface DegreeRequirementsProps {
 
 const DegreeRequirements = ({ requirementGroups }: DegreeRequirementsProps) => {
   return (
-    <div>
+    <div className="card-container">
       <h2 className="section-title">Degree Requirements</h2>
       {requirementGroups.map((group, index) => (
         <RequirementGroup 

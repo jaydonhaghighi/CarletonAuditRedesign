@@ -1,4 +1,3 @@
-
 /**
  * Configuration for various chart types used in the application
  */
@@ -13,7 +12,7 @@ export const gpaChartConfig = {
     yearlyGPA: {
       fill: "#7dd364",
       radius: [0, 4, 4, 0] as [number, number, number, number],
-      barSize: 30
+      barSize: 40
     },
     cgpa: {
       fill: "#7dd364",
@@ -24,7 +23,8 @@ export const gpaChartConfig = {
   axisConfig: {
     yearlyGPA: {
       x: {
-        tickCount: 6
+        tickCount: 6,
+        fontSize: 12
       },
       y: {
         width: 120,

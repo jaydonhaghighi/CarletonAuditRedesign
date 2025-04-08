@@ -1,7 +1,13 @@
-
 import React from 'react';
-import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
-import { gpaChartConfig } from '@/utils/chartConfig';
+import { 
+  BarChart, 
+  Bar, 
+  XAxis, 
+  YAxis, 
+  ResponsiveContainer, 
+  CartesianGrid,
+  Tooltip
+} from 'recharts';
 
 interface CGPAChartProps {
   cgpa: number;
@@ -9,42 +15,50 @@ interface CGPAChartProps {
 }
 
 const CGPAChart = ({ cgpa, maxScale }: CGPAChartProps) => {
-  const { margins, barStyle, axisConfig } = gpaChartConfig;
-  
   // Create data for the chart
   const data = [{ name: 'CGPA', value: cgpa }];
   
   return (
-    <div className="h-full w-full">
-      <h3 className="text-center font-medium mb-2">CGPA</h3>
-      <div className="h-[200px]">
+    <div className="h-full w-full flex flex-col items-center justify-center">
+      <h3 className="text-center font-medium mb-4">CGPA</h3>
+      <div className="h-[300px] w-full flex items-center justify-center">
         <ResponsiveContainer width="100%" height="100%">
-          <RechartsBarChart 
+          <BarChart 
             data={data}
-            layout="vertical"
-            margin={margins.cgpa}
+            margin={{
+              top: 20,
+              right: 30,
+              bottom: 20,
+              left: 20
+            }}
           >
+            <CartesianGrid strokeDasharray="3 3" />
             <XAxis 
-              type="number" 
-              domain={[0, maxScale]} 
-              tick={{ fontSize: axisConfig.cgpa.x.fontSize }}
-              tickCount={axisConfig.cgpa.x.tickCount}
+              dataKey="name" 
+              tick={{ fontSize: 12 }}
             />
-            <YAxis type="category" dataKey="name" hide />
+            <YAxis 
+              domain={[0, maxScale]}
+              tick={{ fontSize: 12 }}
+            />
+            <Tooltip 
+              formatter={(value: number) => [value.toFixed(2), "GPA"]}
+              labelFormatter={(name) => `${name}`}
+            />
             <Bar 
               dataKey="value" 
-              fill={barStyle.cgpa.fill} 
-              radius={barStyle.cgpa.radius}
-              barSize={barStyle.cgpa.barSize}
+              fill="#7dd364"
+              radius={[4, 4, 4, 4]}
+              barSize={50}
               label={{ 
-                position: 'insideRight', 
-                fill: '#fff',
-                fontSize: 14, 
+                position: 'top', 
+                fill: '#374151',
+                fontSize: 16, 
                 fontWeight: 'bold',
-                value: cgpa.toFixed(1) 
+                value: cgpa.toFixed(2) 
               }}
             />
-          </RechartsBarChart>
+          </BarChart>
         </ResponsiveContainer>
       </div>
     </div>

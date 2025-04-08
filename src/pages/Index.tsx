@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import WelcomeSection from '@/components/WelcomeSection';
@@ -63,7 +62,7 @@ const Index = () => {
     {
       title: 'Mandatory Courses',
       progress: 80,
-      status: 'attention-needed' as const
+      status: 'in-progress' as const
     },
     {
       title: 'Engineering Electives',
@@ -79,6 +78,74 @@ const Index = () => {
 
   // Mock data for degree requirements
   const degreeRequirementGroups = [
+    {
+      title: 'Engineering Core Courses',
+      subtitle: 'Fundamental Engineering Courses',
+      progress: '12.0/15.0 credits',
+      percentage: 80,
+      courses: [
+        {
+          code: 'MATH 1004',
+          title: 'Calculus for Engineering',
+          credits: 1.0,
+          status: 'completed' as const,
+          grade: 'A'
+        },
+        {
+          code: 'PHYS 1004',
+          title: 'Physics for Engineering',
+          credits: 1.0,
+          status: 'completed' as const,
+          grade: 'A-'
+        },
+        {
+          code: 'COMP 1005',
+          title: 'Introduction to Computer Science',
+          credits: 1.0,
+          status: 'completed' as const,
+          grade: 'A'
+        },
+        {
+          code: 'SYSC 2004',
+          title: 'Object-Oriented Programming',
+          credits: 1.0,
+          status: 'completed' as const,
+          grade: 'A'
+        },
+        {
+          code: 'SYSC 2006',
+          title: 'Software Design',
+          credits: 1.0,
+          status: 'completed' as const,
+          grade: 'B+'
+        },
+        {
+          code: 'SYSC 2008',
+          title: 'Data Structures and Algorithms',
+          credits: 1.0,
+          status: 'completed' as const,
+          grade: 'A-'
+        },
+        {
+          code: 'SYSC 2100',
+          title: 'Operating Systems',
+          credits: 1.0,
+          status: 'in-progress' as const
+        },
+        {
+          code: 'SYSC 3101',
+          title: 'Software Engineering',
+          credits: 1.0,
+          status: 'in-progress' as const
+        },
+        {
+          code: 'SYSC 3600',
+          title: 'Computer Networks',
+          credits: 1.0,
+          status: 'in-progress' as const
+        }
+      ]
+    },
     {
       title: 'Engineering Electives',
       subtitle: 'Specialized Courses for Engineering',

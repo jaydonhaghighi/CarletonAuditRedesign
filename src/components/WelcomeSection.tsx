@@ -1,7 +1,5 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
 import { CheckCircle } from 'lucide-react';
 
 interface WelcomeSectionProps {
@@ -19,7 +17,6 @@ const WelcomeSection = ({ studentName, program, graduationDate, onTrack }: Welco
           <h1 className="text-2xl font-bold">Welcome, {studentName}</h1>
           <p className="text-gray-700">{program}</p>
         </div>
-        <Button className="bg-red-600 hover:bg-red-700">Request Audit</Button>
       </div>
       
       {onTrack && (

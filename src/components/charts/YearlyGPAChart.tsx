@@ -1,7 +1,14 @@
-
 import React from 'react';
-import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid, LabelList, Tooltip } from 'recharts';
-import { gpaChartConfig } from '@/utils/chartConfig';
+import { 
+  BarChart, 
+  Bar, 
+  XAxis, 
+  YAxis, 
+  ResponsiveContainer, 
+  CartesianGrid, 
+  Tooltip,
+  LabelList
+} from 'recharts';
 
 interface YearlyGPAProps {
   data: {
@@ -12,30 +19,35 @@ interface YearlyGPAProps {
 }
 
 const YearlyGPAChart = ({ data, maxScale }: YearlyGPAProps) => {
-  const { margins, barStyle, axisConfig, labelConfig } = gpaChartConfig;
-
+  // Log the data to verify it's being passed correctly
+  console.log('YearlyGPAChart data:', data);
+  
   return (
     <div className="h-full w-full">
-      <h3 className="text-center font-medium mb-2">Year-by-Year GPA</h3>
-      <div className="h-[250px]">
+      <h3 className="text-center font-medium mb-4">Year-by-Year CGPA</h3>
+      <div className="h-[400px] w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <RechartsBarChart
+          <BarChart
             data={data}
-            layout="vertical"
-            margin={margins.yearlyGPA}
-            barCategoryGap={10} // Add space between bars
+            margin={{
+              top: 20,
+              right: 30,
+              bottom: 20,
+              left: 20
+            }}
           >
-            <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
+            <CartesianGrid strokeDasharray="3 3" />
             <XAxis 
-              type="number" 
-              domain={[0, maxScale]} 
-              tickCount={axisConfig.yearlyGPA.x.tickCount}
+              dataKey="name" 
+              tick={{ fontSize: 12 }}
+              interval={0}
+              angle={-45}
+              textAnchor="end"
+              height={60}
             />
             <YAxis 
-              type="category" 
-              dataKey="name" 
-              width={axisConfig.yearlyGPA.y.width}
-              tick={{ fontSize: axisConfig.yearlyGPA.y.fontSize }}
+              domain={[0, maxScale]}
+              tick={{ fontSize: 12 }}
             />
             <Tooltip 
               formatter={(value: number) => [value.toFixed(2), "GPA"]}
@@ -43,22 +55,25 @@ const YearlyGPAChart = ({ data, maxScale }: YearlyGPAProps) => {
             />
             <Bar 
               dataKey="value" 
-              fill={barStyle.yearlyGPA.fill} 
-              radius={barStyle.yearlyGPA.radius}
-              barSize={barStyle.yearlyGPA.barSize}
+              fill="#7dd364"
+              radius={[4, 4, 4, 4]}
+              barSize={40}
             >
               <LabelList 
                 dataKey="value" 
-                position={labelConfig.position}
-                formatter={labelConfig.formatter} 
-                style={labelConfig.style}
+                position="top"
+                formatter={(value: number) => value.toFixed(2)}
+                style={{ 
+                  fontSize: '12px',
+                  fill: '#374151'
+                }}
               />
             </Bar>
-          </RechartsBarChart>
+          </BarChart>
         </ResponsiveContainer>
       </div>
     </div>
   );
 };
 
-export default YearlyGPAChart;
+export default YearlyGPAChart; 
