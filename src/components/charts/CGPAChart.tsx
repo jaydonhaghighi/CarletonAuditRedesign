@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+import { gpaChartConfig } from '@/utils/chartConfig';
 
 interface CGPAChartProps {
   cgpa: number;
@@ -8,6 +9,8 @@ interface CGPAChartProps {
 }
 
 const CGPAChart = ({ cgpa, maxScale }: CGPAChartProps) => {
+  const { margins, barStyle, axisConfig } = gpaChartConfig;
+  
   // Create data for the chart
   const data = [{ name: 'CGPA', value: cgpa }];
   
@@ -19,20 +22,20 @@ const CGPAChart = ({ cgpa, maxScale }: CGPAChartProps) => {
           <RechartsBarChart 
             data={data}
             layout="vertical"
-            margin={{ top: 5, right: 30, bottom: 5, left: 5 }}
+            margin={margins.cgpa}
           >
             <XAxis 
               type="number" 
               domain={[0, maxScale]} 
-              tick={{ fontSize: 12 }}
-              tickCount={6}
+              tick={{ fontSize: axisConfig.cgpa.x.fontSize }}
+              tickCount={axisConfig.cgpa.x.tickCount}
             />
             <YAxis type="category" dataKey="name" hide />
             <Bar 
               dataKey="value" 
-              fill="#7dd364" 
-              radius={[4, 4, 4, 4]}
-              barSize={30}
+              fill={barStyle.cgpa.fill} 
+              radius={barStyle.cgpa.radius}
+              barSize={barStyle.cgpa.barSize}
               label={{ 
                 position: 'insideRight', 
                 fill: '#fff',

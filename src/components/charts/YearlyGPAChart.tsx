@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid, LabelList } from 'recharts';
+import { gpaChartConfig } from '@/utils/chartConfig';
 
 interface YearlyGPAProps {
   data: {
@@ -11,6 +12,8 @@ interface YearlyGPAProps {
 }
 
 const YearlyGPAChart = ({ data, maxScale }: YearlyGPAProps) => {
+  const { margins, barStyle, axisConfig, labelConfig } = gpaChartConfig;
+
   return (
     <div className="h-full w-full">
       <h3 className="text-center font-medium mb-2">Year-by-Year GPA</h3>
@@ -19,31 +22,31 @@ const YearlyGPAChart = ({ data, maxScale }: YearlyGPAProps) => {
           <RechartsBarChart
             data={data}
             layout="vertical"
-            margin={{ top: 20, right: 50, bottom: 20, left: 120 }}
+            margin={margins.yearlyGPA}
           >
             <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
             <XAxis 
               type="number" 
               domain={[0, maxScale]} 
-              tickCount={6}
+              tickCount={axisConfig.yearlyGPA.x.tickCount}
             />
             <YAxis 
               type="category" 
               dataKey="name" 
-              width={120}
-              tick={{ fontSize: 12 }}
+              width={axisConfig.yearlyGPA.y.width}
+              tick={{ fontSize: axisConfig.yearlyGPA.y.fontSize }}
             />
             <Bar 
               dataKey="value" 
-              fill="#7dd364" 
-              radius={[0, 4, 4, 0]}
-              barSize={30}
+              fill={barStyle.yearlyGPA.fill} 
+              radius={barStyle.yearlyGPA.radius}
+              barSize={barStyle.yearlyGPA.barSize}
             >
               <LabelList 
                 dataKey="value" 
-                position="right" 
-                formatter={(value: number) => value.toFixed(2)} 
-                style={{ fontSize: '12px' }}
+                position={labelConfig.position} 
+                formatter={labelConfig.formatter} 
+                style={labelConfig.style}
               />
             </Bar>
           </RechartsBarChart>
