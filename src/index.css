@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,19 +36,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -96,6 +90,34 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[#ebf2ff] text-foreground;
   }
+}
+
+.progress-bar {
+  @apply h-6 rounded-full;
+}
+
+.progress-completed {
+  @apply bg-audit-green;
+}
+
+.progress-in-progress {
+  @apply bg-audit-blue;
+}
+
+.progress-unfulfilled {
+  @apply bg-audit-purple;
+}
+
+.progress-attention {
+  @apply bg-audit-red;
+}
+
+.card-container {
+  @apply bg-white rounded-xl shadow-sm p-4 mb-4;
+}
+
+.section-title {
+  @apply text-xl font-semibold mb-4;
 }
