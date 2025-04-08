@@ -12,6 +12,13 @@ interface PieChartProps {
 }
 
 const PieChart = ({ data, title }: PieChartProps) => {
+  // Modify the colors to ensure unfulfilled is red
+  const updatedData = data.map(item => 
+    item.name === 'Unfulfilled' 
+      ? { ...item, color: '#ff6b6b' } 
+      : item
+  );
+
   return (
     <div className="h-full w-full">
       <h3 className="text-center font-medium mb-2">{title}</h3>
@@ -19,15 +26,15 @@ const PieChart = ({ data, title }: PieChartProps) => {
         <ResponsiveContainer width="100%" height="100%">
           <RechartsPieChart>
             <Pie
-              data={data}
+              data={updatedData}
               cx="50%"
               cy="50%"
-              innerRadius={50}
-              outerRadius={70}
+              innerRadius={30}  // Reduced inner radius to make graph thicker
+              outerRadius={85}  // Increased outer radius to make graph thicker
               paddingAngle={2}
               dataKey="value"
             >
-              {data.map((entry, index) => (
+              {updatedData.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={entry.color} />
               ))}
             </Pie>
@@ -35,7 +42,7 @@ const PieChart = ({ data, title }: PieChartProps) => {
         </ResponsiveContainer>
       </div>
       <div className="flex justify-center items-center gap-4 mt-4">
-        {data.map((item, index) => (
+        {updatedData.map((item, index) => (
           <div key={index} className="flex items-center">
             <div 
               className="w-3 h-3 rounded-full mr-1" 
