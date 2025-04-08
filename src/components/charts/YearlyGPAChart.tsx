@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid, LabelList } from 'recharts';
+import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid, LabelList, Tooltip } from 'recharts';
 import { gpaChartConfig } from '@/utils/chartConfig';
 
 interface YearlyGPAProps {
@@ -23,6 +23,7 @@ const YearlyGPAChart = ({ data, maxScale }: YearlyGPAProps) => {
             data={data}
             layout="vertical"
             margin={margins.yearlyGPA}
+            barCategoryGap={10} // Add space between bars
           >
             <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
             <XAxis 
@@ -35,6 +36,10 @@ const YearlyGPAChart = ({ data, maxScale }: YearlyGPAProps) => {
               dataKey="name" 
               width={axisConfig.yearlyGPA.y.width}
               tick={{ fontSize: axisConfig.yearlyGPA.y.fontSize }}
+            />
+            <Tooltip 
+              formatter={(value: number) => [value.toFixed(2), "GPA"]}
+              labelFormatter={(name) => `${name}`}
             />
             <Bar 
               dataKey="value" 
