@@ -12,12 +12,12 @@ export const gpaChartConfig = {
   barStyle: {
     yearlyGPA: {
       fill: "#7dd364",
-      radius: [0, 4, 4, 0],
+      radius: [0, 4, 4, 0] as [number, number, number, number],
       barSize: 30
     },
     cgpa: {
       fill: "#7dd364",
-      radius: [4, 4, 4, 4],
+      radius: [4, 4, 4, 4] as [number, number, number, number],
       barSize: 30
     }
   },
@@ -39,7 +39,7 @@ export const gpaChartConfig = {
     }
   },
   labelConfig: {
-    position: "right",
+    position: "right" as const, // Use const assertion to ensure correct type
     formatter: (value: number) => value.toFixed(2),
     style: { fontSize: '12px' }
   }
@@ -51,4 +51,3 @@ export const chartColors = {
   inProgress: "#7c9fdb",
   unfulfilled: "#ff6b6b"
 };
-

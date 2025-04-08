@@ -44,7 +44,7 @@ const YearlyGPAChart = ({ data, maxScale }: YearlyGPAProps) => {
             >
               <LabelList 
                 dataKey="value" 
-                position={labelConfig.position} 
+                position={labelConfig.position}
                 formatter={labelConfig.formatter} 
                 style={labelConfig.style}
               />
