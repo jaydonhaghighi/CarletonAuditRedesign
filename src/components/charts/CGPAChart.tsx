@@ -19,7 +19,7 @@ const CGPAChart = ({ cgpa, maxScale }: CGPAChartProps) => {
           <RechartsBarChart 
             data={data}
             layout="vertical"
-            margin={{ top: 5, right: 5, bottom: 5, left: 5 }}
+            margin={{ top: 5, right: 30, bottom: 5, left: 5 }}
           >
             <XAxis 
               type="number" 

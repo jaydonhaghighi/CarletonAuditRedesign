@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid, Label, LabelList } from 'recharts';
+import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid, LabelList } from 'recharts';
 
 interface YearlyGPAProps {
   data: {
@@ -13,7 +13,7 @@ interface YearlyGPAProps {
 const YearlyGPAChart = ({ data, maxScale }: YearlyGPAProps) => {
   return (
     <div className="h-full w-full">
-      <h3 className="text-center font-medium mb-2">CGPA</h3>
+      <h3 className="text-center font-medium mb-2">Year-by-Year GPA</h3>
       <div className="h-[200px]">
         <ResponsiveContainer width="100%" height="100%">
           <RechartsBarChart
@@ -39,7 +39,7 @@ const YearlyGPAChart = ({ data, maxScale }: YearlyGPAProps) => {
               radius={[0, 4, 4, 0]}
               barSize={20}
             >
-              <LabelList dataKey="value" position="right" />
+              <LabelList dataKey="value" position="right" formatter={(value: number) => value.toFixed(2)} />
             </Bar>
           </RechartsBarChart>
         </ResponsiveContainer>

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid, Legend, LabelList } from 'recharts';
+import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid, Legend } from 'recharts';
 
 interface CreditsBarChartProps {
   data: {
@@ -15,14 +15,13 @@ interface CreditsBarChartProps {
 const CreditsBarChart = ({ data, maxScale }: CreditsBarChartProps) => {
   return (
     <div className="h-full w-full">
-      <h3 className="text-center font-medium mb-2">Credits</h3>
-      <div className="h-[200px]">
+      <h3 className="text-center font-medium mb-2">Credits by Category</h3>
+      <div className="h-[300px]">
         <ResponsiveContainer width="100%" height="100%">
           <RechartsBarChart
             data={data}
             layout="vertical"
-            margin={{ top: 5, right: 30, bottom: 5, left: 100 }}
-            stackOffset="expand"
+            margin={{ top: 20, right: 30, bottom: 20, left: 100 }}
           >
             <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
             <XAxis 
@@ -36,33 +35,36 @@ const CreditsBarChart = ({ data, maxScale }: CreditsBarChartProps) => {
               width={100}
               tick={{ fontSize: 12 }}
             />
+            <Legend 
+              layout="horizontal" 
+              verticalAlign="top" 
+              align="center"
+              wrapperStyle={{ paddingBottom: 10 }}
+            />
             <Bar 
               dataKey="completed" 
               stackId="a"
+              name="Completed"
               fill="#7dd364" 
               radius={[0, 0, 0, 0]}
               barSize={20}
-            >
-              <LabelList dataKey="completed" position="center" fill="#000" style={{ fontSize: '11px' }} />
-            </Bar>
+            />
             <Bar 
               dataKey="inProgress" 
               stackId="a"
+              name="In Progress"
               fill="#7c9fdb" 
               radius={[0, 0, 0, 0]}
               barSize={20}
-            >
-              <LabelList dataKey="inProgress" position="center" fill="#000" style={{ fontSize: '11px' }} />
-            </Bar>
+            />
             <Bar 
               dataKey="unfulfilled" 
               stackId="a"
+              name="Unfulfilled"
               fill="#ff6b6b" 
               radius={[0, 0, 0, 0]}
               barSize={20}
-            >
-              <LabelList dataKey="unfulfilled" position="center" fill="#000" style={{ fontSize: '11px' }} />
-            </Bar>
+            />
           </RechartsBarChart>
         </ResponsiveContainer>
       </div>
