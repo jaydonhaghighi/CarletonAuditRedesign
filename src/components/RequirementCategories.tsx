@@ -29,7 +29,7 @@ const RequirementCategory = ({ title, progress, status }: RequirementCategoryPro
           status === 'on-track' ? 'bg-green-100' : 'bg-yellow-100'
         )}
         indicatorClassName={cn(
-          status === 'on-track' ? 'bg-audit-green' : 'bg-audit-yellow'
+          status === 'on-track' ? 'bg-green-500' : 'bg-yellow-500'
         )}
       />
     </div>
