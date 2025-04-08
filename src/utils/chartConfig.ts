@@ -45,6 +45,30 @@ export const gpaChartConfig = {
   }
 };
 
+// Credits chart configuration
+export const creditsChartConfig = {
+  margins: { top: 20, right: 30, bottom: 20, left: 100 },
+  barStyle: {
+    barSize: 20,
+    radius: [0, 0, 0, 0] as [number, number, number, number]
+  },
+  axisConfig: {
+    x: {
+      tickCount: 7
+    },
+    y: {
+      width: 100,
+      fontSize: 12
+    }
+  },
+  legendConfig: {
+    layout: "horizontal" as const,
+    verticalAlign: "top" as const,
+    align: "center" as const,
+    wrapperStyle: { paddingBottom: 10 }
+  }
+};
+
 // Common chart colors
 export const chartColors = {
   completed: "#7dd364",
