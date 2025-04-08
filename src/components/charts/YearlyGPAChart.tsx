@@ -14,12 +14,12 @@ const YearlyGPAChart = ({ data, maxScale }: YearlyGPAProps) => {
   return (
     <div className="h-full w-full">
       <h3 className="text-center font-medium mb-2">Year-by-Year GPA</h3>
-      <div className="h-[200px]">
+      <div className="h-[250px]">
         <ResponsiveContainer width="100%" height="100%">
           <RechartsBarChart
             data={data}
             layout="vertical"
-            margin={{ top: 5, right: 30, bottom: 5, left: 100 }}
+            margin={{ top: 20, right: 30, bottom: 20, left: 100 }}
           >
             <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
             <XAxis 
@@ -37,9 +37,14 @@ const YearlyGPAChart = ({ data, maxScale }: YearlyGPAProps) => {
               dataKey="value" 
               fill="#7dd364" 
               radius={[0, 4, 4, 0]}
-              barSize={20}
+              barSize={30}
             >
-              <LabelList dataKey="value" position="right" formatter={(value: number) => value.toFixed(2)} />
+              <LabelList 
+                dataKey="value" 
+                position="right" 
+                formatter={(value: number) => value.toFixed(2)} 
+                style={{ fontSize: '12px' }}
+              />
             </Bar>
           </RechartsBarChart>
         </ResponsiveContainer>
@@ -49,3 +54,4 @@ const YearlyGPAChart = ({ data, maxScale }: YearlyGPAProps) => {
 };
 
 export default YearlyGPAChart;
+
